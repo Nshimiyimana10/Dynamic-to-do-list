@@ -9,7 +9,22 @@ document.addEventListener("DOMContentLoaded", function(){
              addTask();
         }
         addTask();
+        loadTasks();
     })
+
+    function loadTasks() {
+        const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+        storedTasks.forEach(taskText => addTask(taskText, false));
+    }
+    
+    function addTask(taskText, save = true) {
+    
+        if (save) {
+            const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            storedTasks.push(taskText);
+            localStorage.setItem('tasks', JSON.stringify(storedTasks));
+        }
+    }
 })
 
 function addTask(){
