@@ -44,3 +44,4 @@ function addTask(){
         taskInput.value = "";
     }
 }
+// this is dom manipulation
